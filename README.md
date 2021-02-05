@@ -6,6 +6,8 @@ This is a small example project developed in Flutter using ObjectBox as a databa
 The operations performed here are Create, Read, Update, Delete and Query.
 Other operations will be added soon. Suggestions are always welcome!
 
+<img src="https://github.com/binhodev/contactlist/blob/master/contact_list.jpg" width="400">
+
 ### ObjectBox Dart & Flutter | [Pub.dev](https://pub.dev/packages/objectbox) | [GitHub](https://github.com/objectbox/objectbox-dart)
 
 [Documentation](https://github.com/objectbox/objectbox-dart/blob/main/objectbox/example/README.md)
