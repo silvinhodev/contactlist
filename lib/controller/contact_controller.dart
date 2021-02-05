@@ -31,7 +31,6 @@ class ContactController {
   }
 
   void dispose() {
-    print('disposing... closed');
     _query.close();
     _store.close();
   }
