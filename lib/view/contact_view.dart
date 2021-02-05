@@ -15,6 +15,8 @@ class _ContactListViewState extends State<ContactListView> {
   final StreamController _listController =
       StreamController<List<ContactModel>>(sync: true);
 
+  final TextEditingController _nameControl = TextEditingController();
+  final TextEditingController _emailControl = TextEditingController();
   ContactController _contactController;
   Stream<List<ContactModel>> _streamContact;
   String _name;
@@ -37,6 +39,8 @@ class _ContactListViewState extends State<ContactListView> {
   void dispose() {
     _contactController.dispose();
     _listController.close();
+    _nameControl.dispose();
+    _emailControl.dispose();
     super.dispose();
   }
 
@@ -59,12 +63,13 @@ class _ContactListViewState extends State<ContactListView> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Form(
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      autovalidateMode: AutovalidateMode.disabled,
                       key: _formKey,
                       child: Row(
                         children: [
                           Expanded(
                             child: TextFormField(
+                              controller: _nameControl,
                               validator: (name) =>
                                   name.isEmpty ? 'Nome inválido' : null,
                               decoration: InputDecoration(
@@ -79,6 +84,7 @@ class _ContactListViewState extends State<ContactListView> {
                                   const EdgeInsets.symmetric(horizontal: 4)),
                           Expanded(
                             child: TextFormField(
+                              controller: _emailControl,
                               validator: (email) =>
                                   email.isEmpty ? 'E-mail inválido' : null,
                               decoration: InputDecoration(
@@ -105,6 +111,8 @@ class _ContactListViewState extends State<ContactListView> {
                           _contactController.addContact(ContactModel.construct(
                               name: _name, email: _email));
                         }
+                        _nameControl.clear();
+                        _emailControl.clear();
                       },
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
@@ -144,6 +152,8 @@ class _ContactListViewState extends State<ContactListView> {
                                           name: _name,
                                           email: _email));
                                 }
+                                _nameControl.clear();
+                                _emailControl.clear();
                               },
                               onPressedDelete: () =>
                                   _contactController.removeContact(contact),
