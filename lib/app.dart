@@ -9,8 +9,8 @@ class App extends StatelessWidget {
       title: 'Contact List',
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData(
-        brightness: Brightness.dark
-      ),
+          brightness: Brightness.dark,
+          primaryColor: Colors.deepPurpleAccent[700]),
       home: ContactListView(),
     );
   }
