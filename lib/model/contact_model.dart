@@ -3,9 +3,9 @@ import 'package:objectbox/objectbox.dart';
 @Entity()
 class ContactModel {
   @Id()
-  int id;
-  String name;
-  String email;
+  int? id;
+  String? name;
+  String? email;
 
   ContactModel();
 

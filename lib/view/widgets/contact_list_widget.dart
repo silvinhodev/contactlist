@@ -3,11 +3,11 @@ import 'package:contactlist/model/contact_model.dart';
 import 'package:flutter/material.dart';
 
 class ContactListWidget extends StatelessWidget {
-  final ContactModel contact;
-  final VoidCallback onPressedEdit, onPressedDelete;
+  final ContactModel? contact;
+  final VoidCallback? onPressedEdit, onPressedDelete;
 
   const ContactListWidget(
-      {this.contact, this.onPressedEdit, this.onPressedDelete});
+      {Key? key, this.contact, this.onPressedEdit, this.onPressedDelete}): super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class ContactListWidget extends StatelessWidget {
       leading: CircleAvatar(
           backgroundColor:
               Colors.primaries[Random().nextInt(Colors.primaries.length)],
-          child: Text(contact.name.characters.first.toUpperCase(),
+          child: Text(contact!.name!.characters.first.toUpperCase(),
               style: TextStyle(
                   color: Colors.primaries[
                                   Random().nextInt(Colors.primaries.length)]
@@ -24,20 +24,20 @@ class ContactListWidget extends StatelessWidget {
                       ? Colors.black
                       : Colors.white))),
       title: Text(
-        contact.name ?? 'Nome não informado',
-        style: TextStyle(fontWeight: FontWeight.w700),
+        contact!.name ?? 'Nome não informado',
+        style: const TextStyle(fontWeight: FontWeight.w700),
       ),
-      subtitle: Text(contact.email ?? 'E-mail não informado'),
+      subtitle: Text(contact!.email ?? 'E-mail não informado'),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
               visualDensity: VisualDensity.compact,
-              icon: Icon(Icons.edit),
+              icon: const Icon(Icons.edit),
               onPressed: onPressedEdit),
           IconButton(
               visualDensity: VisualDensity.compact,
-              icon: Icon(Icons.delete),
+              icon: const Icon(Icons.delete),
               onPressed: onPressedDelete)
         ],
       ),
